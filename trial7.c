@@ -6,6 +6,9 @@
 
 void process_array()
 {
+  // Initialize file to write to
+  FILE *fp;
+  fp = fopen("output_trial_7.txt", "w+");
   // Initialize array
   int *output = calloc(sizeof(int), NUM_ITR);
   if(fork() == 0)
@@ -19,8 +22,7 @@ void process_array()
 	  in = i % 10;
 	  out = in * 3;
 	  output[i] = out;
-	  // For debugging
-	  //printf("i was %d, Input was %d, output was %d, result was %d\n", i, in, out, output[i]);
+	  fprintf(fp, "%d\n", output[i]);
 	}
     }
   else
@@ -34,8 +36,7 @@ void process_array()
 	  in = i % 10;
 	  out = in * 3;
 	  output[i] = out;
-	  // For debugging
-	  //printf("i was %d, Input was %d, output was %d, result was %d\n", i, in, out, output[i]);
+	  fprintf(fp, "%d\n", output[i]);
 	}
     }
   if(output) free(output);
