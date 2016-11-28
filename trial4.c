@@ -18,11 +18,11 @@ void process_array()
     int *input = calloc(sizeof(int), NUM_ITR);
     
     int i = 0;
-    int in;
+    char in[60];
     int out = 0;
     
-    while(fscanf(inputFile, "%d", &in) == 1) {
-        input[i] = in;
+    while(fgets(in, sizeof(in), inputFile)!=NULL && i<NUM_ITR) {
+        input[i] = atoi(in);
         i++;
     }
     
